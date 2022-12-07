@@ -95,8 +95,8 @@ export class AppComponent {
   }
 
   checkWindowIndex(index: number) {
-    console.log('this.currentPage: >>', this.currentPage);
-    console.log('index: >>', index);
+    // console.log('this.currentPage: >>', this.currentPage);
+    // console.log('index: >>', index);
     return Math.abs(this.currentPage - index) < 5;
   }
   /** [ngClass] 也可以放入 getClass() 回傳陣列或字串的方式 */

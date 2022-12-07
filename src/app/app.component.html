@@ -1,6 +1,6 @@
 <nav>
   <ul class="pagination">
-    <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
+    <li class="page-item" [appClass]="{ disabled: currentPage === 0 }">
       <a href="#" class="page-link" (click)="currentPage = currentPage - 1">Prev</a>
     </li>
     <ng-container *ngFor="let image of images; let i = index">
@@ -14,7 +14,40 @@
   </ul>
 </nav>
 
+<!-- custom nav using structural directive *appTimes -->
+<div class="my-5">
+  <ul class="pagination">
+    <ng-container *appTimes="images.length; let i = index; let c = color">
+      <li class="page-item">
+        <a href="#" class="page-link text-white" [appBg]="c">{{ i + 1 }}</a>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+<!-- custom bg attribute using attribute directive *appBg -->
 <div>
-  <h4>{{ images[currentPage].title }}</h4>
+  <h4 [appBg]="'orange'">{{ images[currentPage].title }}</h4>
   <img [src]="images[currentPage].url" alt="">
 </div>
+
+<!------ custom structural directive *appTimes ------>
+<ul *appTimes="5">
+  <li>Hi, there!</li>
+</ul>
+
+<!------ ngSwitch 用法 ------>
+<!-- <div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">
+    CurrentPage is Zero.
+  </div>
+  <div *ngSwitchCase="2">
+    CurrentPage is Two.
+  </div>
+  <div *ngSwitchCase="3">
+    CurrentPage is Three.
+  </div>
+  <div *ngSwitchDefault>
+    Unknown Current Page.
+  </div>
+</div> -->
