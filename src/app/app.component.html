@@ -18,7 +18,7 @@
 <div class="my-5">
   <ul class="pagination">
     <ng-container *appTimes="images.length; let i = index; let c = color">
-      <li class="page-item">
+      <li class="page-item" *ngIf="checkWindowIndex(i)">
         <a href="#" class="page-link text-white" [appBg]="c">{{ i + 1 }}</a>
       </li>
     </ng-container>
@@ -28,7 +28,7 @@
 <!-- custom bg attribute using attribute directive *appBg -->
 <div>
   <h4 [appBg]="'orange'">{{ images[currentPage].title }}</h4>
-  <img [src]="images[currentPage].url" alt="">
+  <img [src]="images[currentPage].url" alt="" class="w-100">
 </div>
 
 <!------ custom structural directive *appTimes ------>
